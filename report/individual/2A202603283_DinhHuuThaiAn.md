@@ -2,9 +2,9 @@
 
 **Cách dùng:** Thay mọi dấu `…` bằng bài làm thật của bạn trước khi nộp link fork trên [LMS](https://aithucchien.vinuni.edu.vn). Giữ nguyên bốn mục và bảng để coach đọc nhanh. Viết ngắn, cụ thể theo ảnh/vùng; không cần thuật ngữ chuyên sâu. Ví dụ trong [hướng dẫn mẫu](../../reports/REPORT_TEMPLATE.md) chỉ giúp hiểu cách điền, không phải câu trả lời để chép lại.
 
-- Mã học viên theo lớp: …
-- Ngày / CVAT local: …
-- Công cụ đã dùng: …
+- Mã học viên theo lớp: 2A202603283
+- Ngày / CVAT local: 12/11/2026 / localhost:8080
+- Công cụ đã dùng:  CVAT Local, Polygon, Edit Points, Semi-Auto
 
 Mã học viên là mã lớp cấp; không cần ghi họ tên trong report nếu kênh [LMS](https://aithucchien.vinuni.edu.vn) đã nhận diện bạn. Chỉ ghi công cụ thật sự đã dùng; không có SAM vẫn làm bài bình thường.
 
@@ -14,9 +14,9 @@ Ghi tên ZIP đúng như file trong `submissions/` và số ảnh đã vẽ, Sav
 
 | Task | File ZIP đúng tên | Hoàn thành mấy ảnh | Điểm tối đa (coach chấm sau) |
 | --- | --- | ---: | ---: |
-| easy_semantic | … | … / 3 | 20 |
-| medium_instance | … | … / 3 | 32 |
-| hard_panoptic | … | … / 2 | 30 |
+| easy_semantic | easy_semantic | 3 / 3 | 20 |
+| medium_instance | medium_instance | 3 / 3 | 32 |
+| hard_panoptic | hard_panoptic | 2 / 2 | 30 |
 | cp1_holes | … | … / 1 | 3 |
 | cp2_slice | … | … / 1 | 3 |
 | cp5_occlusion | … | … / 1 | 3 |
@@ -31,20 +31,20 @@ Nếu export lỗi, ghi task, dữ liệu đã Save đến đâu và lỗi đã 
 
 Chọn object đầu tiên bạn tự vẽ ở `medium_instance`, trước khi xem bất kỳ đề xuất tự động nào cho object đó. Ghi ảnh/vị trí đủ để tìm lại; “quy tắc biên” là lý do bạn chọn hoặc dừng mask ở ranh đó.
 
-- Ảnh, vị trí và object Medium đầu tiên tự vẽ: …
-- Class và quy tắc tôi dùng để chọn biên: …
-- Nếu dùng gợi ý sau đó: vùng gợi ý sai/đúng, hành động sửa/giữ và lý do: …
-- Nếu không dùng gợi ý: ghi “không dùng”; vẫn giải thích một quyết định gán nhãn của mình.
+- Ảnh, vị trí và object Medium đầu tiên tự vẽ: xe máy ở gần trung tâm ảnh.
+- Class và quy tắc tôi dùng để chọn biên: vẽ theo phần xe nhìn thấy rõ và dừng ở ranh giới giữa xe với nền phía sau.
+- Nếu dùng gợi ý sau đó: vùng gợi ý sai/đúng, hành động sửa/giữ và lý do:
+- Nếu không dùng gợi ý: không dùng, Tôi tách từng xe máy thành một instance riêng, không gộp nhiều xe thành một object.
 
 ## 3. Một lỗi tôi tìm thấy và sửa
 
 Chọn một lỗi **có thật** trong bài. Nếu công cụ lỗi khiến bạn chưa sửa được, ghi rõ đã thử gì và cần coach hỗ trợ gì; không ghi “đã sửa” khi chưa sửa.
 
-- Task/ảnh/vùng: …
-- Lỗi thuộc loại: sai lớp / thiếu-thừa vật / gộp-tách / biên / phủ vùng / khác: …
-- Bằng chứng tôi nhìn thấy: …
-- Quy tắc và hành động sửa: …
-- Sau sửa đã Save và export lại chưa? …
+- Task/ảnh/vùng: easy_semantic, ảnh khu dân cư.
+- Lỗi thuộc loại: sai lớp / thiếu-thừa vật / gộp-tách / biên / phủ vùng / khác: biên
+- Bằng chứng tôi nhìn thấy: Vùng road ban đầu lấn sang một phần sidewalk ở mép đường.
+- Quy tắc và hành động sửa: điều chỉnh lại polygon theo mép bó vỉa để tách road và sidewalk thành hai lớp riêng.
+- Sau sửa đã Save và export lại chưa? Đã Save và export lại
 
 Nếu bạn **đã xem Summary tự đánh giá trên GitHub Actions hoặc tự chạy script**, ghi ngắn một kết quả liên quan lỗi vừa sửa (ví dụ task, metric trước/sau nếu có): … / chưa có điểm. Scorecard ba tier tối đa **82**, không phải điểm cuối trên 100. Không tự ghi PASS/top 3/bonus; người phụ trách xác nhận theo tiêu chí lớp. Không đưa file ground truth vào fork.
 
@@ -54,6 +54,6 @@ Mỗi ca là một **vùng cụ thể** khiến bạn phải cân nhắc hai cá
 
 | Ảnh/vị trí | Hai cách hiểu có thể | Quy tắc/chứng cứ | Quyết định hoặc câu hỏi cho coach |
 | --- | --- | --- | --- |
-| 1 | … | … | … |
-| 2 | … | … | … |
-| 3 | … | … | … |
+| easy_semantic - cây lớn | Gán toàn bộ là vegetation hoặc giữ các khoảng trời giữa cành cây là sky | Dựa trên phần nhìn thấy trong ảnh | Giữ các khoảng trời lớn là sky, phần cây là vegetation |
+| easy_semantic - dây điện trên nền trời | Xem là vật riêng hoặc gộp với sky | Dataset không có class wire | Không tạo class riêng cho dây điện |
+| easy_semantic - mép đường | Gộp road và sidewalk hoặc tách riêng | Có mép bó vỉa nhìn thấy | Tách road và sidewalk thành hai vùng riêng |
